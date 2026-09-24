@@ -1,5 +1,7 @@
 # Decomposition of the independence model for two-way intraclass contingency tables
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22928660.svg)](https://doi.org/10.5281/zenodo.22928660)
+
 R code accompanying *Decomposition of Independence Model for Two-Way Intraclass
 Contingency Tables with Ordered Categories* (Nakada, Tahata, Tomizawa and Shinoda).
 
