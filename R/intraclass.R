@@ -132,14 +132,8 @@ fit_LL <- function(y, r, u, start = NULL) {
     W <- exp(outer(z$a, z$a, "+") + z$t * UU)
     W / sum(W)
   }
-  negll <- function(par) {
-    z <- pars(par)
-    E <- outer(z$a, z$a, "+") + z$t * UU
-    m <- max(E)
-    lS <- m + log(sum(exp(E - m)))    # log-sum-exp, computed stably
-    -(sum(tot * z$a) / 2 * 2 - 0)     # placeholder, replaced below
-  }
-  # sum_{i<=j} y_ij (a_i + a_j) = sum_i a_i (n_{i+} + n_{+i}) / 1
+  # sum_{i<=j} y_ij (a_i + a_j) = sum_i a_i (n_{i+} + n_{+i}); the log-sum-exp
+  # is computed stably
   negll <- function(par) {
     z <- pars(par)
     E <- outer(z$a, z$a, "+") + z$t * UU
@@ -397,6 +391,11 @@ decompose <- function(y, r, u = seq_len(r)) {
        # D is the D of the paper: G^2(H_I) - {G^2(H_ZC) + G^2(H_LL)}
        D = unname(G2["I"] - G2["ZC"] - G2["LL"]),
        valid = valid,
+       # FALSE when a search stopped without meeting its criterion. In practice
+       # this is the quasi-Newton search for H_LL on a table in which the LL
+       # maximum is not attained (sampling zeros put the sufficient statistics on
+       # the boundary, theta-hat diverges); the returned fit is then the supremum.
+       # fit_ZC reports FALSE only if every point of its mu grid fails.
        converged = isTRUE(fZ$converged) && isTRUE(fL$converged),
        fits = list(I = fI, ZC = fZ, LL = fL))
 }

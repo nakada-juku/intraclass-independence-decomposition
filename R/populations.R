@@ -6,7 +6,7 @@
 #      pi*_ij  propto  exp( a_i + a_j + t u_i u_j + delta 1{i = j} ),
 #
 #  with pi_ii = pi*_ii and pi_ij = 2 pi*_ij for i < j. The matrix Pi_* is
-#  symmetric by construction, so the full table p_ij = p_ji = pi_ij / 2 is
+#  symmetric by construction, so the full table p_ij = pi*_ij is
 #  symmetric and therefore satisfies marginal homogeneity; the intraclass
 #  probabilities are all that the sampling scheme uses.
 #

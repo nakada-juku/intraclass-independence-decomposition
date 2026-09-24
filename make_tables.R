@@ -26,7 +26,7 @@ w("%%%% TABLE: marginals")
 w("\\begin{table}[htbp]")
 w("\\centering")
 w("\\caption{The graded family of marginal distributions of Subsection~\\ref{subsec_design},",
-  " with the normalised entropy \\eqref{Eq_Entropy} attained in each case}")
+  " with the normalized entropy \\eqref{Eq_Entropy} attained in each case}")
 w("\\label{Table_marginals}")
 w("\\begin{tabular*}{\\textwidth}{@{\\extracolsep\\fill}llr} \\toprule")
 w("target & $\\bm{p}$ & $\\mathcal{H}(\\bm{p})/\\log r$ \\\\ \\midrule")
@@ -47,8 +47,7 @@ w("%%%% TABLE: size")
 w("\\begin{table}[htbp]")
 w("\\centering")
 w("\\caption{Empirical size (\\%) of the tests at the nominal $5\\%$ level under $H_{I}$,",
-  " from $5{,}000$ replications per condition, with the percentage of samples containing",
-  " at least one empty cell in the last column}")
+  " from $5{,}000$ replications per condition}")
 w("\\label{Table_size}")
 w("\\begin{tabular*}{\\textwidth}{@{\\extracolsep\\fill}llrrrrrrr} \\toprule")
 w("$\\bm{p}$ & $r$ & $n$ & $G^{2}(H_{I})$ & $G^{2}(H_{ZC})$ & $G^{2}(H_{LL})$",
@@ -101,7 +100,7 @@ w("%% longtable fixes its caption width at 4in; widen it to the text block.")
 w("\\setlength{\\LTcapwidth}{\\textwidth}")
 w("\\begin{longtable}{@{\\extracolsep{\\fill}}llrrrrrrr}")
 w("\\caption{Empirical power (\\%) at the nominal $5\\%$ level over the whole design,",
-  " at the marginal labelled moderate in Table~\\ref{Table_size}}")
+  " at the marginal labeled moderate in Table~\\ref{Table_size}}")
 w("\\label{Table_power_full} \\\\")
 HEAD <- paste("Case & setting & $r$ & $n$ & $G^{2}(H_{I})$ & $G^{2}(H_{ZC})$ &",
               "$G^{2}(H_{LL})$ & Bonferroni & Fisher \\\\")
