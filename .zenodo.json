@@ -1,0 +1,35 @@
+{
+  "title": "Decomposition of Independence Model for Two-Way Intraclass Contingency Tables with Ordered Categories: R code",
+  "description": "R code accompanying the paper. It fits the independence model of Ishii (1960), the zero covariance model and the linear-by-linear association model to a two-way intraclass contingency table, and reports the three likelihood ratio tests together with the partition of Theorem 2. The stored simulation results are included, so that every table and figure of the paper can be regenerated without repeating the computation. Only base R is required.",
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Nakada, Naoki",
+      "affiliation": "Tokyo University of Science",
+      "orcid": "0009-0001-6319-4514"
+    },
+    {
+      "name": "Yamaguchi, Hikaru",
+      "affiliation": "Tokyo University of Science"
+    },
+    {
+      "name": "Tahata, Kouji",
+      "affiliation": "Tokyo University of Science"
+    },
+    {
+      "name": "Tomizawa, Sadao",
+      "affiliation": "Tokyo University of Science"
+    }
+  ],
+  "keywords": [
+    "contingency tables",
+    "intraclass contingency tables",
+    "independence model",
+    "linear-by-linear association",
+    "zero covariance",
+    "likelihood ratio test",
+    "ordered categories"
+  ]
+}
