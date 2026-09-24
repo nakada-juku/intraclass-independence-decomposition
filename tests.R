@@ -20,7 +20,7 @@ ok <- function(label, passed, detail = "") {
 ## (a) the paper's numbers ---------------------------------------------
 DATA <- list(
   "Ishii (1960)" = list(y = c(4, 17, 8, 21, 20, 6), r = 3,
-                        G2 = c(ZC = 0.190, LL = 0.048, I = 0.243), theta = 1.112),
+                        G2 = c(ZC = 0.190, LL = 0.049, I = 0.243), theta = 1.112),
   "Data 1"       = list(y = c(14, 85, 194, 65, 81, 272, 136, 263, 318, 42), r = 4,
                         G2 = c(ZC = 0.670, LL = 31.275, I = 31.836), theta = NA),
   "Data 2"       = list(y = c(45, 85, 74, 33, 65, 93, 69, 62, 52, 24), r = 4,
@@ -39,7 +39,7 @@ ok("Ishii: fitted frequencies match the table in the paper",
            c(3.594, 16.916, 8.919, 20.995, 20.091, 5.484))) < 0.001)
 
 ## (b) relations that must hold ----------------------------------------
-cat("\n-- (b) relations that must hold, on 240 random tables --\n")
+cat("\n-- (b) relations that must hold, on 270 random tables --\n")
 set.seed(20260922)
 bad_nested <- bad_cov <- bad_sum <- bad_fit <- 0L; N <- 0L
 maxgrad <- 0; worst_sum <- 0; worst_neg <- 0
@@ -85,6 +85,13 @@ for (b in 1:40) {
     worst <- max(worst, abs(fit_LL(y, r, u, start = st)$G2 - base))
 }
 ok("LL does not depend on the starting value", worst < 1e-6, sprintf("max %.1e", worst))
+
+## With every pair in the first row the LL maximum is not attained: theta-hat
+## diverges but the fit converges to the supremum, where G2(H_LL) is zero.
+fb <- fit_LL(c(23, 13, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), 5, 1:5)
+ok("LL on a boundary table: the supremum is returned",
+   fb$G2 < 1e-6 && (fb$theta < 1e-6 || fb$theta > 1e6) && fb$gradient_max < 1e-6,
+   sprintf("G2 %.1e, theta %.1e", fb$G2, fb$theta))
 
 ## (c) the public entry point ------------------------------------------
 cat("\n-- (c) the entry point analyse_intraclass --\n")

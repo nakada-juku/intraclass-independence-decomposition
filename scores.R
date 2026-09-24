@@ -6,12 +6,12 @@
 #  script quantifies the split under several monotone score systems.
 # =====================================================================
 
-source("intraclass.R")
+source("R/intraclass.R")
 
 #' Midrank (ridit-type) scores from the estimated common marginal.
 midrank_scores <- function(y, r) {
   n <- sum(y)
-  p <- row_col_total(y, r) / (2 * n)
+  p <- n_star(y, r) / (2 * n)
   cum <- cumsum(p)
   (c(0, cum[-r]) + cum) / 2
 }

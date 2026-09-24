@@ -93,8 +93,12 @@ cat(sprintf("  %-50s e_min %.3f / n %.3f / n per cell %.3f\n", "R2 of log 95%% p
             summary(stats::lm(log(D_q95) ~ log(emin), order))$r.squared,
             summary(stats::lm(log(D_q95) ~ log(n), order))$r.squared,
             summary(stats::lm(log(D_q95) ~ log(n / (r * (r + 1) / 2)), order))$r.squared))
-cat(sprintf("  %-50s %.2f%% overall, %.2f%% where e_min >= 1\n", "non-convergence of the ZC fit",
-            max(order$nonconv_rate), max(order$nonconv_rate[order$emin >= 1])))
+## Non-convergence comes from the quasi-Newton search for H_LL (the fit of
+## H_ZC never reports it); it marks tables in which the LL maximum is not attained.
+cat(sprintf("  %-50s %d of %d conditions, up to %.2f%%, %.2f%% where e_min >= 1\n",
+            "non-convergence (LL fit)", sum(main$nonconv_rate > 0) + sum(order$nonconv_rate > 0),
+            nrow(main) + nrow(order), max(c(main$nonconv_rate, order$nonconv_rate)),
+            max(order$nonconv_rate[order$emin >= 1])))
 
 cat(sprintf("\n%d checks, %d mismatches\n", nchk, nbad))
 if (nbad > 0L) quit(status = 1L)
