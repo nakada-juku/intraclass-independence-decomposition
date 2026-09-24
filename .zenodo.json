@@ -24,12 +24,10 @@
     }
   ],
   "keywords": [
-    "contingency tables",
-    "intraclass contingency tables",
-    "independence model",
-    "linear-by-linear association",
-    "zero covariance",
-    "likelihood ratio test",
-    "ordered categories"
+    "Decomposition",
+    "Independence",
+    "Intraclass contingency tables",
+    "Linear-by-linear association",
+    "Partition"
   ]
 }
