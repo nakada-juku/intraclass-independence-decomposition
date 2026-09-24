@@ -3,7 +3,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22928660.svg)](https://doi.org/10.5281/zenodo.22928660)
 
 R code accompanying *Decomposition of Independence Model for Two-Way Intraclass
-Contingency Tables with Ordered Categories* (Nakada, Tahata, Tomizawa and Shinoda).
+Contingency Tables with Ordered Categories* (Nakada, Yamaguchi, Tahata and Tomizawa).
 
 It fits the independence model `H_I` of Ishii (1960), the zero covariance model
 `H_ZC` and the linear-by-linear association model `H_LL` to an intraclass table,
