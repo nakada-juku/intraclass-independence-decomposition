@@ -46,18 +46,24 @@ w("")
 w("%%%% TABLE: size")
 w("\\begin{table}[htbp]")
 w("\\centering")
-w("\\caption{Empirical size (\\%) of the tests at the nominal $5\\%$ level under $H_{I}$,",
-  " from $5{,}000$ replications per condition}")
+w("\\caption{Empirical size of the tests under $H_{I}$: the percentage of the $5{,}000$",
+  " replications in which each test rejected $H_{I}$ at the nominal $5\\%$ level, so that",
+  " values near $5$ are correct. The last three columns are the tests of $H_{I}$ obtained by",
+  " combining the $p$-values of the two component tests. The first column identifies the",
+  " marginal by its normalized entropy \\eqref{Eq_Entropy}}")
 w("\\label{Table_size}")
-w("\\begin{tabular*}{\\textwidth}{@{\\extracolsep\\fill}llrrrrrrr} \\toprule")
-w("$\\bm{p}$ & $r$ & $n$ & $G^{2}(H_{I})$ & $G^{2}(H_{ZC})$ & $G^{2}(H_{LL})$",
+w("\\begin{tabular*}{\\textwidth}{@{\\extracolsep\\fill}lrrrrrrrr} \\toprule")
+w("$\\mathcal{H}(\\bm{p})/\\log r$ & $r$ & $n$ & $G^{2}(H_{I})$ & $G^{2}(H_{ZC})$ & $G^{2}(H_{LL})$",
   " & Bonferroni & Simes & Fisher \\\\ \\midrule")
-d <- main[main$case == "1", ]; d <- d[order(-xtfrm(d$shape), d$r, d$n), ]; prev <- ""
+## less concentrated marginal first; the entropy is printed on the first row of each (marginal, r)
+d <- main[main$case == "1", ]; d <- d[order(d$shape != "skew", d$r, d$n), ]; prev <- ""
 for (i in seq_len(nrow(d))) {
   g <- d[i, ]
-  sh <- if (g$shape == prev) "" else if (g$shape == "skew") "moderate" else "sparse"
-  prev <- g$shape
-  w(sprintf("%s & %d & %d & %.1f & %.1f & %.1f & %.1f & %.1f & %.1f \\\\", sh, g$r, g$n,
+  key <- paste(g$shape, g$r)
+  H <- if (key == prev) "" else sprintf("$%.2f$", norm_entropy(A_VECTORS[[g$shape]](g$r)))
+  if (prev != "" && key != prev && sub(" .*", "", prev) != g$shape) w("\\midrule")
+  prev <- key
+  w(sprintf("%s & %d & %d & %.1f & %.1f & %.1f & %.1f & %.1f & %.1f \\\\", H, g$r, g$n,
             g$rej_LRT, g$rej_ZC, g$rej_LL, g$rej_bonf, g$rej_simes, g$rej_fisher))
 }
 w("\\bottomrule\\end{tabular*}\\end{table}")
@@ -100,7 +106,8 @@ w("%% longtable fixes its caption width at 4in; widen it to the text block.")
 w("\\setlength{\\LTcapwidth}{\\textwidth}")
 w("\\begin{longtable}{@{\\extracolsep{\\fill}}llrrrrrrr}")
 w("\\caption{Empirical power (\\%) at the nominal $5\\%$ level over the whole design,",
-  " at the marginal labeled moderate in Table~\\ref{Table_size}}")
+  " at the less concentrated marginal of Table~\\ref{Table_size}",
+  " ($\\mathcal{H}(\\bm{p})/\\log r=0.94$--$0.97$)}")
 w("\\label{Table_power_full} \\\\")
 HEAD <- paste("Case & setting & $r$ & $n$ & $G^{2}(H_{I})$ & $G^{2}(H_{ZC})$ &",
               "$G^{2}(H_{LL})$ & Bonferroni & Fisher \\\\")
