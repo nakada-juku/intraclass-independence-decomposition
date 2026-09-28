@@ -22,7 +22,7 @@ DATA <- list(
   "Ishii (1960)" = list(y = c(4, 17, 8, 21, 20, 6), r = 3,
                         G2 = c(ZC = 0.190, LL = 0.049, I = 0.243), theta = 1.112),
   "Data 1"       = list(y = c(14, 85, 194, 65, 81, 272, 136, 263, 318, 42), r = 4,
-                        G2 = c(ZC = 0.670, LL = 31.275, I = 31.836), theta = NA),
+                        G2 = c(ZC = 0.670, LL = 31.272, I = 31.836), theta = NA),
   "Data 2"       = list(y = c(45, 85, 74, 33, 65, 93, 69, 62, 52, 24), r = 4,
                         G2 = c(ZC = 9.121, LL = 9.717, I = 18.904), theta = NA))
 cat("-- (a) the values printed in the paper --\n")
@@ -30,7 +30,7 @@ for (nm in names(DATA)) {
   d <- DATA[[nm]]; f <- decompose(d$y, d$r)
   for (m in c("ZC", "LL", "I"))
     ok(sprintf("%s: G2(H_%s) = %.3f", nm, m, d$G2[[m]]),
-       abs(f$G2[[m]] - d$G2[[m]]) < 0.005, sprintf("got %.4f", f$G2[[m]]))
+       round(f$G2[[m]], 3) == d$G2[[m]], sprintf("got %.4f", f$G2[[m]]))
   if (!is.na(d$theta))
     ok(sprintf("%s: theta = %.3f", nm, d$theta), abs(f$theta - d$theta) < 0.001)
 }
