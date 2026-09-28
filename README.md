@@ -67,7 +67,7 @@ make_tables.R     every LaTeX table of the paper
 make_figure.R     Figure 2, the discrepancy against the sample size
 make_figure_rate.R Figure 3, its dispersion on both logarithmic scales
 verify_paper.R    checks the manuscript against the results
-scores.R          the sensitivity analysis of Section 5
+scores.R          the sensitivity analysis of Section 6
 example.R         the examples above
 tests.R           the checks described below
 ```
