@@ -79,13 +79,13 @@ for (k in seq_along(LEV)) for (rr in RS) {
   if (rr == RS[1]) {
     axis(2, at = tk, cex.axis = 0.78, tcl = -0.22)
 
-    mtext(bquote(H(bold(p)) / log ~ r %~~% .(LAB[k])), side = 2, line = 2.5,
+    mtext(bquote("entropy" == .(LAB[k])), side = 2, line = 2.5,
           las = 0, cex = 0.72)
   }
-  if (k == 1) mtext(bquote(r == .(rr)), side = 3, line = 0.5, cex = 0.82)
+  if (k == 1) mtext(bquote(italic(r) == .(rr)), side = 3, line = 0.5, cex = 0.82)
 }
-mtext("sample size  n   (logarithmic)", side = 1, outer = TRUE, line = 2.2, cex = 0.78)
-mtext(expression(D == G^2 * (H[I]) - group("{", G^2 * (H[ZC]) + G^2 * (H[LL]), "}")),
+mtext(expression(paste("sample size ", italic(n), "   (logarithmic)")), side = 1, outer = TRUE, line = 2.2, cex = 0.78)
+mtext(expression(italic(D) == G^2 * (italic(H)[I]) - group("{", G^2 * (italic(H)[ZC]) + G^2 * (italic(H)[LL]), "}")),
       side = 2, outer = TRUE, line = 4.2, las = 0, cex = 0.86)
 invisible(dev.off())
 cat("figure written to", OUT, "\n")

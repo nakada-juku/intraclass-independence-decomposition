@@ -58,13 +58,13 @@ for (rr in RS) {
        cex.axis = 0.76, tcl = -0.22)
   if (rr == RS[1]) {
     axis(2, at = yt, cex.axis = 0.82, tcl = -0.22)
-    mtext(expression(paste("standard deviation of ", D)), side = 2, outer = TRUE,
+    mtext(expression(paste("standard deviation of ", italic(D))), side = 2, outer = TRUE,
           line = 2.7, las = 0, cex = 0.92)
   }
-  mtext(bquote(r == .(rr)), side = 3, line = 0.4, cex = 0.95)
-  mtext("sample size  n   (both scales logarithmic)", side = 1, line = 2.0, cex = 0.70)
+  mtext(bquote(italic(r) == .(rr)), side = 3, line = 0.4, cex = 0.95)
+  mtext(expression(paste("sample size ", italic(n), "   (both scales logarithmic)")), side = 1, line = 2.0, cex = 0.70)
   if (rr == RS[1])
-    legend("bottomleft", bty = "n", cex = 0.72, title = expression(H(bold(p)) / log ~ r),
+    legend("bottomleft", bty = "n", cex = 0.72, title = "normalized entropy",
            legend = LAB, col = COL, lwd = 1.4, pch = PCH, pt.cex = 0.6,
            seg.len = 1.4, y.intersp = 0.95)
   if (rr == RS[length(RS)])
