@@ -81,7 +81,7 @@ w("\\begin{table}[htbp]")
 w("\\centering")
 w("\\caption{Empirical power (\\%) at the nominal $5\\%$ level at the configurations",
   " discussed in the text; the full design is in Table~\\ref{Table_power_full} of",
-  " Subsection~\\ref{app_power}}")
+  " Appendix~\\ref{app_power}}")
 w("\\label{Table_power}")
 w("\\begin{tabular*}{\\textwidth}{@{\\extracolsep\\fill}llrrrrrrr} \\toprule")
 w("Case & setting & $r$ & $n$ & $G^{2}(H_{I})$ & $G^{2}(H_{ZC})$ & $G^{2}(H_{LL})$",
