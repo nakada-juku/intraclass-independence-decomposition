@@ -72,4 +72,14 @@ for (rr in RS) {
            col = "grey45", lty = 2, lwd = 1.1, seg.len = 1.8)
 }
 invisible(dev.off())
+## Journals require the fonts of a vector figure to be embedded; pdf() does
+## not embed the standard fonts, and Ghostscript embeds them only with the
+## prepress settings, which are therefore requested here.
+if (grepl("\\.pdf$", OUT)) {
+  if (nzchar(Sys.getenv("R_GSCMD")) || nzchar(Sys.which("gs"))) {
+    grDevices::embedFonts(OUT, options = "-dPDFSETTINGS=/prepress -dEmbedAllFonts=true")
+  } else {
+    warning("Ghostscript not found: the fonts of ", OUT, " are not embedded")
+  }
+}
 cat("figure written to", OUT, "\n")

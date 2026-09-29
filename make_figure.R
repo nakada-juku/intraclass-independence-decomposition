@@ -88,4 +88,14 @@ mtext(expression(paste("sample size ", italic(n), "   (logarithmic)")), side = 1
 mtext(expression(italic(D) == G^2 * (italic(H)[I]) - group("{", G^2 * (italic(H)[ZC]) + G^2 * (italic(H)[LL]), "}")),
       side = 2, outer = TRUE, line = 4.2, las = 0, cex = 0.86)
 invisible(dev.off())
+## Journals require the fonts of a vector figure to be embedded; pdf() does
+## not embed the standard fonts, and Ghostscript embeds them only with the
+## prepress settings, which are therefore requested here.
+if (grepl("\\.pdf$", OUT)) {
+  if (nzchar(Sys.getenv("R_GSCMD")) || nzchar(Sys.which("gs"))) {
+    grDevices::embedFonts(OUT, options = "-dPDFSETTINGS=/prepress -dEmbedAllFonts=true")
+  } else {
+    warning("Ghostscript not found: the fonts of ", OUT, " are not embedded")
+  }
+}
 cat("figure written to", OUT, "\n")

@@ -9,7 +9,8 @@ It fits the independence model `H_I` of Ishii (1960), the zero covariance model
 `H_ZC` and the linear-by-linear association model `H_LL` to an intraclass table,
 and reports the likelihood ratio tests together with the partition of Theorem 2.
 
-Only base R and `stats` are required. `Rsolnp` is *not* needed: the constrained
+Only base R and `stats` are required. The figure scripts use Ghostscript,
+if it is installed, to embed the fonts in the PDF figures, as journals require. `Rsolnp` is *not* needed: the constrained
 fits are solved directly (see "How the models are fitted" below).
 
 ## Quick start
