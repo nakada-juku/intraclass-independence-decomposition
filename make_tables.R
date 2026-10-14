@@ -47,8 +47,9 @@ w("%%%% TABLE: size")
 w("\\begin{table}[htbp]")
 w("\\centering")
 w("\\caption{Empirical size of the tests under $H_{I}$: the percentage of the $5{,}000$",
-  " replications in which each test rejected $H_{I}$ at the nominal $5\\%$ level, so that",
-  " values near $5$ are correct. The last three columns are the tests of $H_{I}$ obtained by",
+  " replications in which each test rejected its null hypothesis at the nominal $5\\%$ level",
+  " ($H_{ZC}$ and $H_{LL}$ both hold under $H_{I}$), so that values near $5$ are correct.",
+  " The last three columns are the tests of $H_{I}$ obtained by",
   " combining the $p$-values of the two component tests. The first column identifies the",
   " marginal by its normalized entropy \\eqref{Eq_Entropy}}")
 w("\\label{Table_size}")
